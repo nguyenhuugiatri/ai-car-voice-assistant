@@ -1,0 +1,9 @@
+dist
+node_modules
+pnpm-lock.yaml
+*.md
+.scratch
+src/components/ui
+src/components/ai-elements
+.output
+.nitro

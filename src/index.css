@@ -1,0 +1,842 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+@import '@fontsource-variable/geist';
+@import '@fontsource-variable/saira';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-heading: var(--font-sans);
+  --font-sans: 'Geist Variable', sans-serif;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+/* ---------------------------------------------------------------------- */
+/* Head unit tokens                                                       */
+/* ---------------------------------------------------------------------- */
+
+/*
+ * The head unit doesn't use the shadcn palette above. It's an in-car screen:
+ * glanced at while driving, often in the dark, and its two colors *carry
+ * meaning* — cold is blue, hot is amber. A dedicated token set instead of
+ * scattering `white/5`, `sky-400`, `amber-500` across components: change a
+ * shade in one place, and code readers see right away that `bg-car-heat` is
+ * about heating, not "the yellow color".
+ *
+ * Three surface levels replace the single old `white/5`: background → card →
+ * control. Without levels everything floats on one layer, and in a car "can I
+ * tap this?" has to be answerable at a glance.
+ */
+@theme {
+  /* No pure black: OLED smears when scrolling, and a slightly blue-tinted
+     background makes the two semantic colors stand out more. */
+  --color-car-void: oklch(0.13 0.012 255);
+  --color-car-bg: oklch(0.175 0.014 255);
+  --color-car-surface: oklch(0.235 0.014 255);
+  --color-car-surface-2: oklch(0.295 0.015 255);
+  --color-car-line: oklch(0.42 0.016 255);
+
+  /* Text: three levels; the faintest is still ≥ 4.5:1 on `--color-car-bg`. */
+  --color-car-ink: oklch(0.97 0.004 255);
+  --color-car-ink-muted: oklch(0.79 0.012 255);
+  --color-car-ink-faint: oklch(0.665 0.014 255);
+
+  /* Cold / on / focus. */
+  --color-car-cold: oklch(0.78 0.128 226);
+  --color-car-cold-ink: oklch(0.19 0.05 240);
+  /* Hot — seat heating, front/rear defrost and the `warmer` direction. */
+  --color-car-heat: oklch(0.79 0.152 66);
+  --color-car-heat-ink: oklch(0.22 0.06 60);
+  --color-car-danger: oklch(0.72 0.19 22);
+  /* Turn signals: the orange-leaning amber of real car lamps, and the green of
+     the indicator arrow on the instrument cluster — kept apart from `heat` so
+     "heating" and "signaling" aren't the same color. */
+  --color-car-signal: oklch(0.8 0.17 62);
+  --color-car-signal-tell: oklch(0.8 0.19 148);
+
+  /* Voice assistant — an aurora along the top edge while listening/thinking/
+     speaking. A narrow violet → indigo → blue arc, built around hue 255:
+     that's the base hue of the whole head unit (`void`, `bg`, `surface`, `ink`
+     all sit at 255, chroma 0.012–0.016), so the aurora reads as **the
+     background lighting up by itself**, not a different color layer pasted
+     on. It's also the only free hue range left: 22 is `danger`, 62–66 is
+     `signal`/`heat`, 148 is `signal-tell`, 226 is `cold`.
+
+     L 0.70–0.78 and C 0.12–0.16 so it sits on par with the other accent
+     colors (`cold` 0.78/0.128, `heat` 0.79/0.152). The previous version was
+     at L 0.58–0.68 and C 0.19–0.26 — darker but more saturated than
+     everything else, so it stood out as if pasted in from another app; its
+     first stop was even at hue 18, exactly 4° from `danger`.
+
+     Still does **not** reach `cold` (226): it stops at 234. `cold` means
+     "cooling", the aurora means "listening" — two meanings don't share a
+     color. */
+  --color-car-voice-1: oklch(0.74 0.14 296);
+  --color-car-voice-2: oklch(0.7 0.16 274);
+  --color-car-voice-3: oklch(0.73 0.14 252);
+  --color-car-voice-4: oklch(0.78 0.12 234);
+
+  /* An evenly spaced 4px scale, used for vertical rhythm between blocks. */
+  --spacing-car-gap: 0.75rem;
+
+  /*
+   * Gauge face: only for numbers (temperature, clock). Saira is the squarish
+   * typeface of dashboard gauges, with full Vietnamese diacritics; regular
+   * text stays Geist — two typefaces, two clear jobs, no mixing.
+   */
+  --font-gauge: 'Saira Variable', var(--font-sans);
+
+  /*
+   * Three curves, three jobs:
+   *
+   * - `--ease-car`: touch feedback. A very strong ease-out — covers ~78% of
+   *   the distance in the first 25% of the time — so the change shows the
+   *   moment a finger lands.
+   * - `--ease-car-state`: state appearing on the car image (color, glow,
+   *   airflow). Commands often come from voice, when eyes aren't on the car:
+   *   with `--ease-car`, 200 ms really only shows a change for ~60 ms, and by
+   *   the time the eyes come back it's over. This curve is less front-loaded,
+   *   paired with 600 ms so there's a tail long enough to see.
+   * - `--ease-car-move`: mechanical parts moving on screen (doors, windows,
+   *   lids, mirrors, sunroof) — accelerate, then brake smoothly, as if driven
+   *   by motors and gas struts.
+   */
+  --ease-car: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-car-state: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-car-move: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+}
+
+@layer components {
+  /*
+   * Root of the head unit. Besides the background, it **remaps shadcn's
+   * tokens to the car palette** for the whole subtree.
+   *
+   * Why: `SpeechInput` (a reused component, left unmodified) colors the mic
+   * button `bg-primary` when idle and `bg-destructive` while listening. The
+   * previous version overrode the mic color via `className`, and `className`
+   * is merged by `cn` *last* — so it also overrode the "listening" color, and
+   * the mic button looked identical on and off. In a voice UI that's not a
+   * cosmetic bug: it removes the only way to know whether the machine is
+   * listening.
+   *
+   * Changing tokens instead of overriding classes preserves that component's
+   * own distinction between its two states, while still coming out in the
+   * car's colors.
+   */
+  .head-unit {
+    --primary: var(--color-car-cold);
+    --primary-foreground: var(--color-car-cold-ink);
+    --destructive: var(--color-car-danger);
+    --ring: var(--color-car-cold);
+    --border: oklch(1 0 0 / 8%);
+  }
+
+  /*
+   * No button in the head unit waits 300 ms to see whether the user intends
+   * to double-tap-to-zoom. This screen can't zoom, and that delay is what
+   * turns "tapped but nothing happened yet" into a second glance.
+   *
+   * Set at the root instead of sprinkling `touch-manipulation` on each button:
+   * this rule holds for *every* button here, including buttons of reused
+   * components like `SpeechInput`.
+   */
+  .head-unit button {
+    touch-action: manipulation;
+  }
+
+  /*
+   * Shared focus ring. Every custom-drawn button in `car/` uses this class —
+   * the keyboard must be able to reach the whole head unit, and these buttons
+   * aren't shadcn `<Button>`s, so they don't inherit its `focus-visible`.
+   */
+  .car-focus {
+    @apply focus-visible:ring-car-cold focus-visible:ring-offset-car-bg outline-none focus-visible:ring-2 focus-visible:ring-offset-2;
+  }
+
+  /* Glow around an active control — enough to catch at a glance, not garish. */
+  .car-glow-cold {
+    box-shadow:
+      0 0 0 1px color-mix(in oklch, var(--color-car-cold) 45%, transparent),
+      0 6px 20px -8px var(--color-car-cold);
+  }
+
+  .car-glow-heat {
+    box-shadow:
+      0 0 0 1px color-mix(in oklch, var(--color-car-heat) 45%, transparent),
+      0 6px 20px -8px var(--color-car-heat);
+  }
+
+  /*
+   * Turn signals. Two styles, same rhythm (the component sets
+   * `animation-duration` from `TURN_SIGNAL_PERIOD_MS`):
+   *
+   * - `.car-blink`: on at the start of the period, off in the second half —
+   *   the glow on the floor, the indicator arrow on the button.
+   * - `.car-blink-sweep`: LEDs light up in sequence from the inside out, then
+   *   the whole strip goes off, showing the turn direction through the motion
+   *   itself. The path must have `pathLength="1"` and be drawn from the inner
+   *   end to the outer end.
+   *
+   * Blinking is information ("the car is signaling a turn"), so under reduced
+   * motion the lamp **stays lit** rather than letting the global rule skip to
+   * the last frame — the last frame is off, i.e. the turn signal is on but
+   * looks off.
+   */
+  .car-blink {
+    animation: car-blink 800ms linear infinite;
+  }
+
+  .car-blink-sweep {
+    animation: car-blink-sweep 800ms linear infinite;
+    stroke-dasharray: 1 1;
+  }
+
+  /*
+   * Air swirl between the two seat rows when recirculation is on. Rotates
+   * clockwise, matching the circular arrow on `RecirculationIcon` — the button
+   * and the car image tell the same story.
+   *
+   * Slow (2.6 s per half turn, i.e. 5.2 s per full turn): air churning in the
+   * cabin, not a fan blowing — and this is also the only thing still moving
+   * when the car is stationary; spinning fast would steal all the viewer's
+   * attention.
+   *
+   * `fill-box` + `center`: the rotation center is the center of the bounding
+   * box of the two swirl blades themselves, not the `viewBox` origin — so if
+   * the swirl's placement changes, the animation doesn't need editing.
+   */
+  .car-swirl {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: car-swirl 2600ms linear infinite;
+  }
+
+  /*
+   * Tiny wiper arm on the wiper-mode buttons (`WiperModeIcon`). It pivots
+   * around the arm's axis at the base of the windshield — the axis coordinates
+   * are written directly here because they belong to the icon's shape, on the
+   * same 24×24 grid as every other icon.
+   *
+   * Two styles, both taking an `animation-duration` equal to the full period
+   * (`sweep + pause` of `WIPER_TIMING`): `.car-wipe` sweeps almost
+   * continuously, `.car-wipe-pause` makes one wipe then waits — the
+   * intermittent mode.
+   */
+  .car-wipe,
+  .car-wipe-pause {
+    transform-box: view-box;
+    transform-origin: 12px 18.6px;
+    animation: car-wipe 1300ms ease-in-out infinite;
+  }
+
+  .car-wipe-pause {
+    animation-name: car-wipe-pause;
+  }
+
+  /*
+   * Indicator on toggle buttons — a small LED bar like the physical buttons on
+   * a real climate panel. When on, it lights up and glows; when off, the dim
+   * bar is still visible, so you know it's a switch and not a label.
+   */
+  .car-led {
+    --car-led: var(--color-car-cold);
+
+    background: oklch(1 0 0 / 12%);
+    transition:
+      background-color 200ms var(--ease-car),
+      box-shadow 200ms var(--ease-car);
+  }
+
+  /* Defrost runs on heating elements: its indicator glows amber, the same
+     color as the defrost glow drawn on the car image right above the button
+     grid. */
+  .car-led[data-tone='heat'] {
+    --car-led: var(--color-car-heat);
+  }
+
+  .car-led[data-on='true'] {
+    background: var(--car-led);
+    box-shadow: 0 0 10px 1px
+      color-mix(in oklch, var(--car-led) 70%, transparent);
+  }
+}
+
+/*
+ * The assistant's aurora (`VoiceAurora`). Four layers, each with one job:
+ *
+ * - `.car-voice-aurora` — the frame: fades out from the top edge down, hidden
+ *   when `data-phase` is `idle`. Only changes `opacity`, never shape. When
+ *   idle, animations stop completely and it's hidden via visibility once the
+ *   fade finishes — an invisible aurora still running blur all day is burning
+ *   GPU for nothing.
+ * - `.car-voice-field` — the only layer that receives the mic level: `scaleY`
+ *   follows `--voice-level` (set by the component). Kept separate from the
+ *   drifting layer because with two `transform`s on the same element, the
+ *   latter erases the former.
+ * - `.car-voice-ribbon` — each band of light: a soft radial smear, drifting
+ *   horizontally at its own rhythm. It takes three smears, offset in phase,
+ *   speed and color and stacked on top of each other, to make an aurora; a
+ *   gradient strip sliding uniformly like the previous version just makes a
+ *   conveyor belt — the eye catches the period immediately and it becomes
+ *   decoration.
+ * - `.car-voice-edge` — a sharp 2px line of light right at the edge, no blur.
+ *   This is what makes the whole cluster read as "a light" rather than a
+ *   smudge on the screen.
+ *
+ * Why soft and faint: right below the top edge sit the time and date of
+ * `StatusBar`. This band overlays them, so all the harsh brightness is pushed
+ * into the 2px line flush with the edge — where there's no text — while the
+ * text area only gets a faint glow under `opacity` 0.45.
+ *
+ * The rhythm conveys the phase, it isn't there for looks: when listening it
+ * drifts slowly and thickens with the voice; when thinking it thins out and
+ * drifts four times faster — "working" without any text (speed is set via
+ * playbackRate in VoiceAurora.tsx, not by changing duration, because changing
+ * duration mid-run makes the smears jump); when speaking it breathes with the
+ * rhythm of the speech.
+ *
+ * Under reduced motion, the global rule in `base` skips animations to the last
+ * frame: the smears stop at staggered positions (each smear's last frame is
+ * different), the edge line stops at `-50%` — same image as `0` — and the
+ * breathing stops fully lit. The aurora is still visible, you still know the
+ * car is listening. Exactly the part that needs keeping.
+ */
+.car-voice-aurora {
+  mask-image: linear-gradient(to bottom, black 0%, black 14%, transparent 92%);
+  opacity: 0;
+  visibility: hidden;
+  /* On hide: `opacity` fades over 260ms, then `visibility` flips to hidden. */
+  transition:
+    opacity 260ms var(--ease-car),
+    visibility 0s linear 260ms;
+}
+
+.car-voice-aurora:not([data-phase='idle']) {
+  visibility: visible;
+  /* On show: visible immediately, and only then does `opacity` fade in. */
+  transition:
+    opacity 260ms var(--ease-car),
+    visibility 0s linear 0s;
+}
+
+.car-voice-aurora[data-phase='idle'] .car-voice-ribbon,
+.car-voice-aurora[data-phase='idle'] .car-voice-edge {
+  animation-play-state: paused;
+}
+
+.car-voice-aurora[data-phase='listening'],
+.car-voice-aurora[data-phase='speaking'] {
+  opacity: 1;
+}
+
+.car-voice-aurora[data-phase='thinking'] {
+  opacity: 0.9;
+}
+
+.car-voice-field {
+  --voice-level: 0;
+  transform: scaleY(calc(0.5 + var(--voice-level) * 0.5));
+  transform-origin: top;
+  transition: transform 140ms ease-out;
+}
+
+/*
+ * `--x0`/`--x1`/`--dur`/`--tint` are set by the component per smear.
+ * `alternate` + `ease-in-out` give a back-and-forth drift with no seam — it's
+ * not a looping scroll, so there's no need for a double-width strip like the
+ * previous version.
+ */
+.car-voice-ribbon {
+  background: radial-gradient(
+    ellipse 50% 50% at 50% 50%,
+    var(--tint) 0%,
+    color-mix(in oklch, var(--tint) 35%, transparent) 45%,
+    transparent 72%
+  );
+  filter: blur(20px);
+  opacity: 0.55;
+  animation: car-voice-drift var(--dur) ease-in-out infinite alternate;
+}
+
+.car-voice-edge {
+  background: linear-gradient(
+    90deg,
+    var(--color-car-voice-1) 0%,
+    var(--color-car-voice-2) 12.5%,
+    var(--color-car-voice-3) 25%,
+    var(--color-car-voice-4) 37.5%,
+    var(--color-car-voice-1) 50%,
+    var(--color-car-voice-2) 62.5%,
+    var(--color-car-voice-3) 75%,
+    var(--color-car-voice-4) 87.5%,
+    var(--color-car-voice-1) 100%
+  );
+  width: 200%;
+  animation: car-voice-flow 7s linear infinite;
+}
+
+.car-voice-aurora[data-phase='speaking'] {
+  animation: car-voice-breathe 1.4s ease-in-out infinite;
+}
+
+@keyframes car-voice-drift {
+  from {
+    transform: translate3d(var(--x0), 0, 0);
+  }
+  to {
+    transform: translate3d(var(--x1), 0, 0);
+  }
+}
+
+@keyframes car-voice-flow {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes car-voice-breathe {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/*
+ * Sound wave on the card (`VoiceWave`) — five bars, 20px tall, standing where
+ * the previous version's status dot was. A dot can only say "still alive";
+ * wave bars say **whether the mic is hearing anything** — the question people
+ * actually ask when they talk to the car and see no reaction yet.
+ *
+ * Two sources of motion, split by phase, deliberately:
+ *
+ * - `listening`: height follows `--voice-level`, no height animation. The bars
+ *   jump with the actual voice; in silence they lie at the bottom — that is
+ *   information ("the car isn't hearing anything"). Only the `car-voice-await`
+ *   brightness pulse signals "waiting".
+ * - `thinking`/`speaking`: the mic is off, so there's nothing to draw; the
+ *   bars run a machine rhythm instead, each bar phase-offset via
+ *   `animation-delay`.
+ *
+ * `--gain` differs per bar so the cluster looks like a spectrum, not five
+ * levers set to the same notch.
+ */
+.car-voice-wave span {
+  transform: scaleY(var(--bar, 0.12));
+  transform-origin: center;
+  transition: transform 90ms ease-out;
+}
+
+/*
+ * Listening with no sound yet: the bars still lie at the bottom per the mic
+ * level (that's information), but **brightness ripples** from left to right —
+ * "the car is waiting for you". Without this pulse, once the reply has been
+ * spoken the card sits perfectly still, as if frozen. Only changes `opacity`,
+ * so it doesn't fight the mic level for `transform`.
+ */
+.car-voice-wave[data-phase='listening'] span {
+  animation: car-voice-await 1.8s ease-in-out infinite;
+}
+
+@keyframes car-voice-await {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.car-voice-wave[data-phase='thinking'] span,
+.car-voice-wave[data-phase='speaking'] span {
+  animation: car-voice-bar 900ms ease-in-out infinite alternate;
+}
+
+@keyframes car-voice-bar {
+  from {
+    transform: scaleY(0.14);
+  }
+  to {
+    transform: scaleY(calc(0.45 + var(--gain, 1) * 0.35));
+  }
+}
+
+/*
+ * The text card (`VoicePanel`) drops gently from below the aurora when a
+ * conversation opens, instead of popping in within a single frame. Entry
+ * only: closing the card is usually the Esc key, and keyboard actions
+ * shouldn't animate.
+ */
+.car-voice-panel {
+  transform-origin: top center;
+  transition:
+    opacity 200ms var(--ease-car),
+    transform 200ms var(--ease-car);
+}
+
+@starting-style {
+  .car-voice-panel {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.97);
+  }
+}
+
+/*
+ * `.car-voice-sweep` — a band of light sweeping across the reply on the card
+ * (`VoiceOverlay`) while the assistant speaks. Not word-accurate karaoke (TTS
+ * returns no timestamps), just a "this sentence isn't done being spoken"
+ * marker, so the barge-in button makes sense.
+ */
+.car-voice-sweep {
+  background-image: linear-gradient(
+    100deg,
+    var(--color-car-ink-muted) 35%,
+    var(--color-car-ink) 50%,
+    var(--color-car-ink-muted) 65%
+  );
+  background-size: 220% 100%;
+  background-clip: text;
+  color: transparent;
+  animation: car-voice-sweep 2.4s linear infinite;
+}
+
+@keyframes car-voice-sweep {
+  from {
+    background-position: -60% 0;
+  }
+  to {
+    background-position: 160% 0;
+  }
+}
+
+/*
+ * The reply block swaps occupants (thinking → reply → hint): the new occupant
+ * settles in over 180 ms instead of snapping over. A 2px blur hides the
+ * instant when the two states overlap. No exit — the old one leaves at once.
+ */
+.car-voice-swap {
+  transition:
+    opacity 180ms var(--ease-car),
+    transform 180ms var(--ease-car),
+    filter 180ms var(--ease-car);
+}
+
+@starting-style {
+  .car-voice-swap {
+    opacity: 0;
+    transform: translateY(4px);
+    filter: blur(2px);
+  }
+}
+
+/* Crisp on/off like an LED, softened by just 60 ms so it doesn't look jerky. */
+@keyframes car-blink {
+  0%,
+  46% {
+    opacity: 1;
+  }
+  54%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Rotating exactly half a turn makes the two symmetric blades swap places —
+   the image repeats identically, so the loop shows no seam even though it
+   only turns 180°. */
+@keyframes car-swirl {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(180deg);
+  }
+}
+
+/* One wipe: from the rest position on the right, sweep over to the left
+   A-pillar and back. */
+@keyframes car-wipe {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-74deg);
+  }
+}
+
+/* The same wipe, but taking up only just over a third of the period; the rest
+   is spent at the rest position — ratio taken from `WIPER_TIMING.intermittent`
+   (1300 wipe / 2400 pause). */
+@keyframes car-wipe-pause {
+  0% {
+    transform: rotate(0deg);
+  }
+  18% {
+    transform: rotate(-74deg);
+  }
+  35%,
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+/* Fill the whole strip in the first 30%, stay lit, then turn the whole strip
+   off at once. The jump back to `dashoffset: 1` happens while the lamp is off,
+   so it's invisible. */
+@keyframes car-blink-sweep {
+  0% {
+    opacity: 1;
+    stroke-dashoffset: 1;
+  }
+  30% {
+    stroke-dashoffset: 0;
+  }
+  46% {
+    opacity: 1;
+  }
+  54%,
+  100% {
+    opacity: 0;
+    stroke-dashoffset: 0;
+  }
+}
+
+/*
+ * Screen change (`App`): the new screen settles in over 180 ms instead of
+ * snapping over. Entry only — the old screen leaves at once, so there's no
+ * moment where two screens overlap and no need for blur. Keyed with
+ * `key={screen}` in `App.tsx`.
+ */
+.car-screen-enter {
+  transition:
+    opacity 180ms var(--ease-car),
+    transform 180ms var(--ease-car);
+}
+
+@starting-style {
+  .car-screen-enter {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+}
+
+/*
+ * The now-playing card (`NowPlaying`) rises out of the dock. It only slides
+ * 12px and fades in — enough to see it *grow out of* the dock, not enough to
+ * become a scene transition.
+ *
+ * Hiding sinks it back into the dock along the same path, faster than on entry:
+ * vanishing within a single frame makes the dock look like it just jerked
+ * shorter. The card is **always mounted**, toggled via `data-open` — a
+ * transition can reverse midway, so tapping the "Music" tile twice in a row
+ * turns the card around instead of restarting it from the beginning. The
+ * transition follows the *target* state: 220ms to open, 160ms to hide.
+ */
+.car-now-playing {
+  transition:
+    opacity 220ms var(--ease-car),
+    transform 220ms var(--ease-car);
+}
+
+.car-now-playing[data-open='false'] {
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition:
+    opacity 160ms var(--ease-car),
+    transform 160ms var(--ease-car);
+}
+
+@starting-style {
+  .car-now-playing {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+/*
+ * Album art is a YouTube image that loads after the track title. It fades in
+ * once loaded, instead of a beat where the new title sits with the old track's
+ * art. Fade only, no slide: the "Next" button gets tapped over and over, so
+ * motion here must be nearly invisible.
+ */
+.car-artwork {
+  opacity: 0;
+  transition: opacity 180ms var(--ease-car);
+}
+
+.car-artwork[data-loaded='true'] {
+  opacity: 1;
+}
+
+/*
+ * Three equalizer bars on the album art. Each bar is slightly offset in phase
+ * and tempo so they don't jump in unison like a single light. When paused they
+ * stand still at a low level — still showing "there's a track", just not
+ * running.
+ */
+.car-eq-bar {
+  width: 2px;
+  height: 100%;
+  border-radius: 1px;
+  background: var(--color-car-ink);
+  transform-origin: bottom;
+  transform: scaleY(0.35);
+  animation: car-eq 900ms ease-in-out infinite alternate;
+  animation-play-state: paused;
+}
+
+.car-eq-bar:nth-child(2) {
+  animation-duration: 700ms;
+  animation-delay: -300ms;
+}
+
+.car-eq-bar:nth-child(3) {
+  animation-duration: 1100ms;
+  animation-delay: -600ms;
+}
+
+.car-eq[data-playing='true'] .car-eq-bar {
+  animation-play-state: running;
+}
+
+.car-eq[data-playing='false'] .car-eq-bar {
+  animation: none;
+}
+
+@keyframes car-eq {
+  from {
+    transform: scaleY(0.3);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
