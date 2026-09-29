@@ -1,21 +1,21 @@
-# car-voice-ui
+# AI Car Voice Assistant
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-A car head unit simulator controlled by **Vietnamese speech**, running entirely
-in the browser: Web Speech API → LLM (on-device via WebLLM, or OpenAI through
-the server) → tool call → UI update. The server only holds the API keys; the car
-state lives in the browser.
+A car head unit (infotainment) simulator you control by voice, running entirely
+in the browser: Web Speech API → LLM (on-device via WebLLM/WebGPU, or OpenAI
+through the server) → tool call → UI update. The server only holds the API
+keys; the car state lives in the browser.
 
-**Live demo: <https://car-voice-demo.vercel.app/>**
+**[Try the live demo](https://car-voice-demo.vercel.app/)** (Chrome; the voice
+interface ships in Vietnamese — see [Language](#language))
 
 https://github.com/user-attachments/assets/728d557d-7124-44d2-998e-641dcc65356c
 
-You speak a command in Vietnamese; the browser transcribes it, an LLM turns it
-into a tool call, and the car UI updates — climate, windows, doors, seats,
-music, web lookup. The screen is in English, but the voice interface is
-Vietnamese on purpose — you speak Vietnamese and the car answers in Vietnamese.
-That is what the project explores.
+You speak a command; the browser transcribes it, an LLM turns it into a tool
+call, and the car UI updates — climate, windows, doors, seats, music, web
+search. The car speaks its reply back through ElevenLabs or the operating
+system's voice.
 
 The domain vocabulary is in `CONTEXT.md`, the domain model in
 `docs/domain-model.md`. How to contribute: `CONTRIBUTING.md`.
@@ -28,7 +28,7 @@ cp .env.example .env   # optional: OPENAI_API_KEY, ELEVENLABS_API_KEY
 pnpm dev               # one process: UI + /api/*
 ```
 
-Requires **Chrome** (WebGPU for WebLLM + Web Speech API for Vietnamese speech
+Requires **Chrome** (WebGPU for WebLLM + Web Speech API for speech
 recognition).
 
 ### Voice
@@ -54,6 +54,24 @@ This mode is ported from an earlier voice prototype: **listening is still the
 browser's Web Speech API**, speaking is ElevenLabs (see "Voice" above) with `speechSynthesis`
 as the fallback. If no voice is available the car still listens and still acts;
 it just replies in text.
+
+## Language
+
+The voice interface ships in **Vietnamese**: speech recognition, the LLM
+prompts, the tool descriptions and the car's spoken replies are all Vietnamese;
+the on-screen UI is English. To switch a fork to another language, these are
+the main places to change:
+
+| What | Where |
+|---|---|
+| Language codes (`vi-VN`, `vi`) for recognition, TTS and music search | `src/voice/use-speech-recognition.ts`, `src/voice/use-call-session.ts`, `src/voice/use-speech-queue.ts`, `server/routes/api/tts/index.post.ts`, `server/routes/api/music/search.get.ts` |
+| The car's replies | `src/domain/say.ts` |
+| Tool descriptions and prompts | `src/domain/tools.ts`, `src/prompt/` |
+| End-of-speech detection (sentence-final particles) | `src/voice/endpoint.ts` |
+| Eval cases | `src/eval/cases.ts` |
+
+The remaining strings (music and web-search messages) turn up with a grep for
+Vietnamese diacritics.
 
 ## Server
 

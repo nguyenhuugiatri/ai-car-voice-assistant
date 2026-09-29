@@ -1,8 +1,8 @@
 {
-  "name": "car-voice-ui",
+  "name": "ai-car-voice-assistant",
   "private": true,
   "version": "0.0.0",
-  "description": "A car head unit simulator controlled by Vietnamese speech, running in the browser",
+  "description": "A car head unit simulator you control by voice, running in the browser",
   "license": "MIT",
   "type": "module",
   "packageManager": "pnpm@10.34.5",
