@@ -7,11 +7,9 @@ in the browser: Web Speech API → LLM (on-device via WebLLM, or OpenAI through
 the server) → tool call → UI update. The server only holds the API keys; the car
 state lives in the browser.
 
-**Live demo: <https://car-voice-demo.vercel.app/>** (open it in Chrome)
+**Live demo: <https://car-voice-demo.vercel.app/>**
 
-[![Demo video: touch controls, talking to the car in Vietnamese, web search and music](docs/demo.jpg)](docs/demo.mp4)
-
-▶ [Watch the 25-second demo](docs/demo.mp4)
+https://github.com/user-attachments/assets/728d557d-7124-44d2-998e-641dcc65356c
 
 You speak a command in Vietnamese; the browser transcribes it, an LLM turns it
 into a tool call, and the car UI updates — climate, windows, doors, seats,
